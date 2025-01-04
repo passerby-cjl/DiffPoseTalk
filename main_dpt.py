@@ -439,7 +439,14 @@ def main(args, option_text=None):
             style_enc = None
 
         # Build model
-        model = DiffTalkingHead(args, device=device)
+        if args.from_pretrained:
+            checkpoint_path, exp_name = utils.get_model_path(args.exp_name, args.iter)
+            model_data = torch.load(checkpoint_path, map_location=device)
+            model_args = utils.NullableArgs(model_data['args'])
+            model = DiffTalkingHead(model_args, device=device)
+            model.load_state_dict(model_data['model'])
+        else:
+            model = DiffTalkingHead(args, device=device)
 
         # Dataset
         train_dataset = LmdbDataset(data_root, data_root / 'train.txt', coef_stats_file, args.fps, args.n_motions,
