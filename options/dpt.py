@@ -47,6 +47,7 @@ def add_training_options(parser: argparse.ArgumentParser):
     parser.add_argument('--lr', type=float, default=0.0001, help='learning rate')
     parser.add_argument('--gradient_accumulation_steps', type=int, default=1, help='gradient accumulation')
     parser.add_argument('--scheduler', type=str, default='None', choices=['None', 'Warmup', 'WarmupThenDecay'])
+    parser.add_argument('--from_pretrained', type=Path, default=None)
 
     parser.add_argument('--criterion', type=str, default='l2', choices=['l1', 'l2'])
     parser.add_argument('--l_vert', type=float, default=2e6, help='weight of the vertex loss')
