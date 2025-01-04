@@ -3,8 +3,16 @@ urle () { [[ "${1}" ]] || return 1; local LANG=C i x; for (( i = 0; i < ${#1}; i
 
 # Fetch FLAME data
 echo -e "\nBefore you continue, you must register at https://flame.is.tue.mpg.de/ and agree to the FLAME license terms."
-read -p "Username (FLAME):" username
-read -p "Password (FLAME):" password
+if [ -z '$1']; then
+    read -p "Username (FLAME):" username
+else
+    username=$1
+fi
+if [ -z '$2']; then
+    read -p "Password (FLAME):" password
+else
+    password=$2
+fi
 username=$(urle $username)
 password=$(urle $password)
 
