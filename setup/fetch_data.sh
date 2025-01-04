@@ -23,7 +23,7 @@ wget --post-data "username=$username&password=$password" 'https://download.is.tu
 # wget --no-check-certificate --http-user=$username --http-password=$password 'https://download.is.tue.mpg.de/download.php?domain=flame&sfile=FLAME2020.zip&resume=1' -O './models/data/FLAME2020.zip' 
 # Check if download was successful before unzipping
 if [ -f './models/data/FLAME2020.zip' ]; then
-    unzip ./models/data/FLAME2020.zip -d ./models/data/FLAME2020 -o
+    unzip -o ./models/data/FLAME2020.zip -d ./models/data/FLAME2020
 else
     echo "FLAME2020 download failed."
 fi
@@ -33,7 +33,7 @@ echo -e "\nDownloading FLAME_masks..."
 wget --no-check-certificate --http-user=$username --http-password=$password 'https://files.is.tue.mpg.de/tbolkart/FLAME/FLAME_masks.zip' -O './models/data/FLAME_masks.zip'
 # Check if download was successful before unzipping
 if [ -f './models/data/FLAME_masks.zip' ]; then
-    unzip ./models/data/FLAME_masks.zip -d ./models/data/FLAME_masks -o
+    unzip -o ./models/data/FLAME_masks.zip -d ./models/data/FLAME_masks -o
     mv ./models/data/FLAME_masks/FLAME_masks.pkl ./models/data
 else
     echo "FLAME_masks download failed."
