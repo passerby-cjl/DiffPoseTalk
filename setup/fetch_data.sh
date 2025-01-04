@@ -18,7 +18,7 @@ password=$(urle $password)
 
 mkdir -p ./models/data
 
-echo -e "\nDownloading FLAME..."
+echo -e "\nDownloading FLAME with User:$username Pwd:$password..."
 wget --post-data "username=$username&password=$password" 'https://download.is.tue.mpg.de/download.php?domain=flame&sfile=FLAME2020.zip&resume=1' -O './models/data/FLAME2020.zip'  --no-check-certificate --continue
 # wget --no-check-certificate --http-user=$username --http-password=$password 'https://download.is.tue.mpg.de/download.php?domain=flame&sfile=FLAME2020.zip&resume=1' -O './models/data/FLAME2020.zip' 
 # Check if download was successful before unzipping
