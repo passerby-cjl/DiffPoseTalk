@@ -33,7 +33,7 @@ echo -e "\nDownloading FLAME_masks..."
 wget --no-check-certificate --http-user=$username --http-password=$password 'https://files.is.tue.mpg.de/tbolkart/FLAME/FLAME_masks.zip' -O './models/data/FLAME_masks.zip'
 # Check if download was successful before unzipping
 if [ -f './models/data/FLAME_masks.zip' ]; then
-    unzip -o ./models/data/FLAME_masks.zip -d ./models/data/FLAME_masks -o
+    unzip -o ./models/data/FLAME_masks.zip -d ./models/data/FLAME_masks
     mv ./models/data/FLAME_masks/FLAME_masks.pkl ./models/data
 else
     echo "FLAME_masks download failed."
