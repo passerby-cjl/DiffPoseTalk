@@ -440,7 +440,7 @@ def main(args, option_text=None):
 
         # Build model
         if args.from_pretrained:
-            checkpoint_path, exp_name = utils.get_model_path(args.exp_name, args.iter)
+            checkpoint_path = args.from_pretrained
             model_data = torch.load(checkpoint_path, map_location=device)
             model_args = utils.NullableArgs(model_data['args'])
             model = DiffTalkingHead(model_args, device=device)
