@@ -2,6 +2,7 @@ import argparse
 from collections import deque, defaultdict
 from datetime import datetime
 from pathlib import Path
+import platform
 from typing import Optional
 
 import numpy as np
@@ -18,6 +19,8 @@ from data import LmdbDataset, infinite_data_loader
 from models import DiffTalkingHead, StyleEncoder
 from models.flame import FLAME, FLAMEConfig
 
+if platform.system() != "Windows":
+    pathlib.WindowsPath = pathlib.PosixPath
 
 def train(args, model: DiffTalkingHead, style_enc: Optional[StyleEncoder], train_loader, val_loader, optimizer,
           save_dir, scheduler=None, writer=None, flame=None):
